@@ -1,0 +1,35 @@
+steps:
+  # yarn install
+  - name: "gcr.io/cloud-builders/yarn"
+    args: ["install"]
+
+  # - name: "gcr.io/cloud-builders/gcloud"
+  #   entrypoint: "bash"
+  #   args:
+  #     - "-c"
+  #     - |
+  #       echo 'JWT_SECRET="${_JWT_SECRET}"' > .env
+  #       echo 'FIREBASE_API_KEY="${_FIREBASE_API_KEY}"' >> .env
+  #       echo 'FIREBASE_AUTH_DOMAIN="${_FIREBASE_AUTH_DOMAIN}"' >> .env
+  #       echo 'FIREBASE_DATABASE_URL="${_FIREBASE_DATABASE_URL}"' >> .env
+  #       echo 'FIREBASE_PROJECT_ID="${_FIREBASE_PROJECT_ID}"' >> .env
+  #       echo 'FIREBASE_STORAGE_BUCKET="${_FIREBASE_STORAGE_BUCKET}"' >> .env
+  #       echo 'FIREBASE_MESSEGING_SENDER_ID="${_FIREBASE_MESSEGING_SENDER_ID}"' >> .env
+  #       echo 'FIREBASE_APP_ID="${_FIREBASE_APP_ID}"' >> .env
+  #       echo 'FIREBASE_MEASUREMENT_ID="${_FIREBASE_MEASUREMENT_ID}"' >> .env
+  #       cat .env
+
+  # yarn run build
+  - name: "gcr.io/cloud-builders/yarn"
+    args: ["run", "build"]
+
+  # gcloud app deploy --appyaml=./deploy/frontend.yaml --stop-previous-version --quiet
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "app",
+        "deploy",
+        "--appyaml=./deploy/frontend.yaml",
+        "--stop-previous-version",
+        "--quiet",
+      ]
