@@ -3,7 +3,7 @@
 
 name: Node.js CI
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
@@ -19,5 +19,3 @@ jobs:
     - name: Install dependencies
       run: yarn --frozen-lockfile
     - run: yarn build
-    - name: Create a commit status
-      run: curl -X POST -H "Accept:application/vnd.github.v3+json" https://api.github.com/repos/perzikanz/learn_nextjs/statuses/{sha} -d '{"state":"success"}'
