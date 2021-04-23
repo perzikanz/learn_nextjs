@@ -17,10 +17,9 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
       - run: yarn build
-
       - name: Deploy an App Engine app
         id: deploy-app
-        uses: google-github-actions/deploy-appengine@v0.1.0
+        uses: google-github-actions/deploy-appengine@main
         with:
           project: ${{ secrets.gcp_project }}
           deliverables: path/to/app.yaml
