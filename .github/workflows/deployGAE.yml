@@ -2,7 +2,7 @@ name: Deploy GAE
 
 on:
   push:
-    branches: master
+    branches: deploy/prd
 
 jobs:
   build:
